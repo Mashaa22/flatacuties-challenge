@@ -9,6 +9,7 @@ function fetchData() {
 document.addEventListener("DOMContentLoaded", () => {
   fetchData();
 });
+
 //get dom elements
 const characterBar = document.getElementById("character-bar");
 const characterName = document.getElementById("name");
@@ -16,7 +17,7 @@ const characterImage = document.getElementById("image");
 const characterVote = document.getElementById("vote-count");
 const characterVoteForm = document.getElementById("votes-form");
 
-//funtion to render characters
+// render characters
 function renderCharacters(data) {
   data.forEach((data) => {
     const nameSpan = document.createElement("span");
@@ -31,7 +32,7 @@ function renderCharacters(data) {
   });
 }
 
-// function updateVotes(data)
+// updating Votes
 characterVoteForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const newVotes = parseInt(event.target.votes.value);
@@ -43,17 +44,15 @@ characterVoteForm.addEventListener("submit", (event) => {
     votes: votecount,
   };
 
-  fetch("http://localhost:3000/characters", {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json; charset=UTF-8",
-      Authorization: "",
-    },
-    method: "PATCH",
+  fetch('http://localhost:3300/characters', {
+    method: 'POST',
     body: JSON.stringify({
-      votes: votecount,
+        image: newData.image,
+        name: newData.name,
+        vote: newData.vote
     }),
-  })
-    .then((res) => res.json())
-    .then((json) => console.log(json));
-});
+    Headers: {"content-Type":"application/json"}
+})
+    .then((res) => {
+    res.json()
+})
