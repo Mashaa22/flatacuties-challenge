@@ -9,13 +9,12 @@ function fetchData() {
 document.addEventListener("DOMContentLoaded", () => {
   fetchData();
 });
-//getting the  dom elements
+//get dom elements
 const characterBar = document.getElementById("character-bar");
 const characterName = document.getElementById("name");
 const characterImage = document.getElementById("image");
 const characterVote = document.getElementById("vote-count");
 const characterVoteForm = document.getElementById("votes-form");
-
 
 //funtion to render characters
 function renderCharacters(data) {
@@ -32,7 +31,7 @@ function renderCharacters(data) {
   });
 }
 
-// function updateVotes(data) {
+// function updateVotes(data)
 characterVoteForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const newVotes = parseInt(event.target.votes.value);
@@ -40,7 +39,6 @@ characterVoteForm.addEventListener("submit", (event) => {
   let current = parseInt(characterVote.textContent);
   let votecount = (current += newVotes);
   characterVote.innerText = votecount;
-  //update votes
   let updateVotes = {
     votes: votecount,
   };
