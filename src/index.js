@@ -17,7 +17,7 @@ const characterVote = document.getElementById("vote-count");
 const characterVoteForm = document.getElementById("votes-form");
 
 
-//render characters
+//funtion to render characters
 function renderCharacters(data) {
   data.forEach((data) => {
     const nameSpan = document.createElement("span");
@@ -33,20 +33,14 @@ function renderCharacters(data) {
 }
 
 // function updateVotes(data) {
-// console.log(characters)
 characterVoteForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  // console.log(e.target.votes.value)
   const newVotes = parseInt(event.target.votes.value);
-  //console.log(newVotes);
   const characterVote = document.getElementById("vote-count");
-  //console.log(characterVote.textContent);
   let current = parseInt(characterVote.textContent);
-  //console.log(current);
-  //console.log(typeof current);
   let votecount = (current += newVotes);
   characterVote.innerText = votecount;
-  //update database
+  //update votes
   let updateVotes = {
     votes: votecount,
   };
