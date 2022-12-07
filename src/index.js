@@ -1,4 +1,6 @@
 // Your code here
+
+//fetch data
 function fetchData() {
   fetch("http://localhost:3000/characters")
     .then((resp) => resp.json())
@@ -9,7 +11,6 @@ function fetchData() {
 document.addEventListener("DOMContentLoaded", () => {
   fetchData();
 });
-
 //get dom elements
 const characterBar = document.getElementById("character-bar");
 const characterName = document.getElementById("name");
@@ -32,7 +33,7 @@ function renderCharacters(data) {
   });
 }
 
-// updating Votes
+// function input votes
 characterVoteForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const newVotes = parseInt(event.target.votes.value);
@@ -44,15 +45,22 @@ characterVoteForm.addEventListener("submit", (event) => {
     votes: votecount,
   };
 
-  fetch('http://localhost:3300/characters', {
-    method: 'POST',
+  // Reset button to default
+  document.getElementById("reset-btn").addEventListener("click", () => {
+    document.getElementById("vote-count").innerText = 0;
+  });
+
+  fetch("http://localhost:3000/characters", {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: "",
+    },
+    method: "PATCH",
     body: JSON.stringify({
-        image: newData.image,
-        name: newData.name,
-        vote: newData.vote
+      votes: votecount,
     }),
-    Headers: {"content-Type":"application/json"}
-})
-    .then((res) => {
-    res.json()
-})
+  })
+    .then((res) => res.json())
+    .then((json) => console.log(json));
+});
