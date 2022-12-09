@@ -5,7 +5,7 @@ function fetchData() {
   fetch("http://localhost:3000/characters")
     .then((resp) => resp.json())
     .then((data) => {
-      getCharacters(data);
+      renderCharacters(data);
     });
 }
 //get dom elements
@@ -16,7 +16,7 @@ const characterVote = document.getElementById("vote-count");
 const characterVoteForm = document.getElementById("votes-form");
 
 // getting characters
-function getCharacters(data) {
+function renderCharacters(data) {
   data.forEach((data) => {
 // creating span for animals
     const nameSpan = document.createElement("span");
