@@ -5,12 +5,9 @@ function fetchData() {
   fetch("http://localhost:3000/characters")
     .then((resp) => resp.json())
     .then((data) => {
-      renderCharacters(data);
+      getCharacters(data);
     });
 }
-document.addEventListener("DOMContentLoaded", () => {
-  fetchData();
-});
 //get dom elements
 const characterBar = document.getElementById("character-bar");
 const characterName = document.getElementById("name");
@@ -18,9 +15,10 @@ const characterImage = document.getElementById("image");
 const characterVote = document.getElementById("vote-count");
 const characterVoteForm = document.getElementById("votes-form");
 
-// render characters
-function renderCharacters(data) {
+// getting characters
+function getCharacters(data) {
   data.forEach((data) => {
+// creating span for animals
     const nameSpan = document.createElement("span");
     nameSpan.innerText = data.name;
 
@@ -33,8 +31,9 @@ function renderCharacters(data) {
   });
 }
 
-// function input votes
+// input the votes
 characterVoteForm.addEventListener("submit", (event) => {
+  // prevent page from refreshing
   event.preventDefault();
   const newVotes = parseInt(event.target.votes.value);
   const characterVote = document.getElementById("vote-count");
@@ -46,17 +45,17 @@ characterVoteForm.addEventListener("submit", (event) => {
   };
 
   // Reset button to default
-  document.getElementById("reset-btn").addEventListener("click", () => {
+  document.getElementById("reset-btn").addEventListener("click", (e) => {
     document.getElementById("vote-count").innerText = 0;
   });
 
+// updating the data
   fetch("http://localhost:3000/characters", {
+    method: "PATCH",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json; charset=UTF-8",
-      Authorization: "",
+      'Content-Type': "application/json"
     },
-    method: "PATCH",
     body: JSON.stringify({
       votes: votecount,
     }),
