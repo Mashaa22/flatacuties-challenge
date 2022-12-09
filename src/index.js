@@ -1,4 +1,4 @@
-// Your code here
+/// Your code here
 
 //fetch data
 function fetchData() {
@@ -33,21 +33,24 @@ function getCharacters(data) {
 
 // input the votes
 characterVoteForm.addEventListener("submit", (event) => {
+
   // prevent page from refreshing
   event.preventDefault();
   const newVotes = parseInt(event.target.votes.value);
-  const characterVote = document.getElementById("vote-count");
+  const characterVote = document.querySelector('#vote-count');
   let current = parseInt(characterVote.textContent);
   let votecount = (current += newVotes);
   characterVote.innerText = votecount;
   let updateVotes = {
     votes: votecount,
   };
+  
 
   // Reset button to default
   document.getElementById("reset-btn").addEventListener("click", (e) => {
     document.getElementById("vote-count").innerText = 0;
   });
+
 
 // updating the data
   fetch("http://localhost:3000/characters", {
