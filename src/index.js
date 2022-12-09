@@ -55,10 +55,7 @@ characterVoteForm.addEventListener("submit", (event) => {
 // updating the data
   fetch("http://localhost:3000/characters", {
     method: "PATCH",
-    headers: {
-      Accept: "application/json",
-      'Content-Type': "application/json"
-    },
+    headers: { 'Content-Type': "application/json"},
     body: JSON.stringify({
       votes: votecount,
     }),
