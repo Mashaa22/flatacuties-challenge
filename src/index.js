@@ -23,6 +23,7 @@ function getCharacters(data) {
     nameSpan.innerText = data.name;
 
     characterBar.appendChild(nameSpan);
+    // creating event for clicking btns
     nameSpan.addEventListener("click", () => {
       characterName.textContent = data.name;
       characterImage.setAttribute("src", data.image);
