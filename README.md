@@ -23,7 +23,7 @@
 
 ## Live Link
 The application is deployed in Github Page
-Here is the link [JsonServer](Mashaa22.github.io/flatacuties-challenge/)
+Here is the link [JsonServer](http://127.0.0.1:5502/index.html)
 
 ## Bugs
     There is no bugs in the project.
@@ -38,4 +38,4 @@ Here is the link [JsonServer](Mashaa22.github.io/flatacuties-challenge/)
     - +254987634790938
 
 ## License
-Licenced under the [MT-licence](https://github.com/Mashaa22/flatacuties-challenge/blob/main/license) Copyright (c) 2022 **Alex Maranga
+Licenced under the [MT-licence](https://github.com/Mashaa22/flatacuties-challenge/edit/main/LICENSE.md) Copyright (c) 2022 **Alex Maranga
