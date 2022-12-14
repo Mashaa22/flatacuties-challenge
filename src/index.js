@@ -8,6 +8,10 @@ function fetchData() {
       renderCharacters(data);
     });
 }
+document.addEventListener("DOMContentLoaded", () => {
+  fetchData();
+});
+
 //get dom elements
 const characterBar = document.getElementById("character-bar");
 const characterName = document.getElementById("name");
